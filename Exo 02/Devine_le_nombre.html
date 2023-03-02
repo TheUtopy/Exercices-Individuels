@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Demande le nombre de joueur
+        do {
+            var numberOfPlayer = parseInt(prompt("Combien de joueur ? (1 ou 2)"));
+        } while (numberOfPlayer != 1 && numberOfPlayer != 2)
+
+        // lance le jeu selon le nombre de joueur
+        if (numberOfPlayer == 1) {
+            // Get a random number to guess
+            var numberToGuess = Math.floor(Math.random() * 101);
+            guessingGame(numberToGuess)
+        }
+        else {
+            //demande un nombre à faire deviner
+            var numberToGuess;
+            do{
+                numberToGuess = parseInt(prompt("Entrez un nombre entre 0 et 100 à faire deviner : "));
+            } while (numberToGuess < 0 || numberToGuess > 100 || typeof(numberToGuess) != "number")
+            guessingGame(numberToGuess)
+        }
+
+
+        // fonction pour un joueur
+        function guessingGame(toGuessNumber){
+            let text, min, max;
+            min = 0;
+            max = 100;
+            //boucle pour faire deviner le nombre
+            do{
+                // Demande le nombre
+                // if statement pour gérer le texte de la première itération
+                if (text != undefined) {
+                    var giveNumber = parseInt(prompt(text + min + " et " + max + "\nEntrez un nombre : "));
+                }
+                else {var giveNumber = parseInt(prompt("Entrez un nombre : "));}
+
+                // Trop petit
+                if (giveNumber < toGuessNumber) {
+                    text = "Trop petit. Le nombre est entre ";
+                    if(giveNumber > min) { 
+                        min = giveNumber
+                    }
+                } 
+                // Trop grand
+                else if (giveNumber > toGuessNumber) {
+                    text = "Trop grand. Le nombre est entre ";
+                    if(giveNumber < max) { 
+                        max = giveNumber
+                    }
+                }
+                // Victoire !
+                else {
+                    document.querySelector("body").innerHTML = "Félicitations ! Vous avez trouver le nombre !!!";
+                }
+            } while (giveNumber != toGuessNumber)
+        }
+        //changement
+    </script>
+
+
+</body>
+</html>
