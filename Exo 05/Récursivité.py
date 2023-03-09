@@ -52,8 +52,11 @@ def fibo(x, tab=[0, 1]):
     if x == 0:
         return tab
 
+    if tab == [0, 1]:
+        x -= 2
+
     tab.append(tab[-1] + tab[-2])
     return fibo(x-1, tab)
 
-print(fibo(8))
+print(fibo(20))
 
