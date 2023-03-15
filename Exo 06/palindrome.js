@@ -71,3 +71,39 @@ function getNextPalindromes(x) {
 
 // Etape 04
 
+function isPalindrome(text) {
+    let left_text = ""
+    let half_length
+    if (text.length % 2 == 1) {
+        half_length = (text.length - 1) / 2
+        for (let i = 0; i < half_length; i++) {
+            left_text = text[i] + left_text
+        }
+        half_length = (text.length + 1) / 2
+    } else {
+        half_length = text.length / 2
+        for (let i = 0; i < half_length; i++) {
+            left_text = text[i] + left_text
+        }
+    }
+    if (left_text == text.slice(half_length, text.length)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function isDatePalindrome(date) {
+    if (isValidDate(date)) {
+        date = date.replaceAll("/", "")
+        if (isPalindrome(date)) {
+            return "This date is a palindrome."
+        } else {
+            return "This date is not a palindrome."
+        }
+    } else {
+        return "Date not valid."
+    }
+}
+
+console.log(isDatePalindrome("11/02/2011"))
