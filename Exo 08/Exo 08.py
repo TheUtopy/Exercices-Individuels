@@ -81,7 +81,7 @@ def is_guess_right(combination_to_guess, guessed_combination):
 
 
 def game():
-	combination_to_guess = ['red', 'blue', 'green', 'black']
+	combination_to_guess = make_combination()
 	number_of_guessing = 3
 	guessed_combination = try_to_guess()
 	number_of_guessing -= 1
