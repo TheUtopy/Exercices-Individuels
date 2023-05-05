@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exo 11</title>
+</head>
+<body>
+
+    <form class="grid" action="/result" method="POST">
+
+        <center><label for="string">Enter some text:</label>
+        <input type="text" name="string" id="string">
+        <br>
+        <label for="n">Enter a number of iteration:</label>
+        <input type="text" name="n" id="n">
+
+        <input type="submit" class="file_submit"></center>
+
+        <center>
+            {% if html_text %}
+            {{html_text | safe}}
+            {% endif %}
+        </center>
+
+    </form>
+
+</body>
+</html>
